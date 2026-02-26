@@ -5,97 +5,158 @@
   <title>Why Not Me</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div id="app">
+<div class="cursor-glow"></div>
 
-  <!-- INTRO -->
-  <section class="screen active" id="intro">
-    <h1 class="hero-title">WHY NOT ME.</h1>
-    <button class="enter-btn" onclick="goTo('quote')">Enter</button>
+<nav>
+  <div class="nav-left">WHY NOT ME</div>
+  <div class="nav-right">
+    <span onclick="goTo(0)">Home</span>
+    <span onclick="goTo(2)">Chapters</span>
+    <span onclick="goTo(9)">Manifesto</span>
+    <span onclick="goTo(10)">Contact</span>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- 0 Intro -->
+  <section class="page active">
+    <h1 class="hero">WHY NOT ME.</h1>
+    <button onclick="nextPage()">Continue</button>
   </section>
 
-  <!-- QUOTE -->
-  <section class="screen" id="quote">
-    <div class="center-text">
+  <!-- 1 Quote -->
+  <section class="page">
+    <div class="center">
       <p class="quote">
         Wasn’t it a great brand that once said<br>
         “Don’t ask if your dreams are crazy. Ask if they’re crazy enough.”
       </p>
       <p class="blue">I did. And here we are.</p>
     </div>
-    <div class="screen-click" onclick="goTo('chapters')"></div>
+    <button onclick="nextPage()">Continue</button>
   </section>
 
-  <!-- CHAPTER GRID -->
-  <section class="screen" id="chapters">
-    <div class="editorial-grid">
-
-      <div class="chapter-card large" onclick="openChapter('c1')">
-        <span>01</span>
-        <h2>This wasn’t supposed to be sent here.</h2>
-      </div>
-
-      <div class="chapter-card" onclick="openChapter('c2')">
-        <span>02</span>
-        <h2>I don’t have the required years.</h2>
-      </div>
-
-      <div class="chapter-card" onclick="openChapter('c3')">
-        <span>03</span>
-        <h2>My tech experience includes doomscrolling, UPI payments, adding to cart and online shopping.</h2>
-      </div>
-
-      <div class="chapter-card wide" onclick="openChapter('c4')">
-        <span>04</span>
-        <h2>I am obsessed with stories.</h2>
-      </div>
-
-      <div class="chapter-card" onclick="openChapter('c5')">
-        <span>05</span>
-        <h2>I like dogs. Yes, I am basic.</h2>
-      </div>
-
-      <div class="chapter-card" onclick="openChapter('c6')">
-        <span>06</span>
-        <h2>I plan holidays like product launches.</h2>
-      </div>
-
-      <div class="chapter-card large" onclick="openChapter('c7')">
-        <span>07</span>
-        <h2>What I bring to the table.</h2>
-      </div>
-
+  <!-- 2 -->
+  <section class="page">
+    <div class="icon">🎯</div>
+    <h2>This wasn’t supposed to be sent here.</h2>
+    <p>This was supposed to be sent to adidas. It isn’t.</p>
+    <p>Because I think Nike is cooler.</p>
+    <p>If you’re going to take a swing, you might as well aim properly.</p>
+    <div class="nav-buttons">
+      <button onclick="prevPage()">Back</button>
+      <button onclick="nextPage()">On experience</button>
     </div>
   </section>
 
-  <!-- CHAPTER VIEW -->
-  <section class="screen chapter-view" id="chapterView">
-    <button class="back-btn" onclick="goTo('chapters')">← Back</button>
-    <div id="chapterContent"></div>
-  </section>
-
-  <!-- MANIFESTO -->
-  <section class="screen" id="manifesto">
-    <div class="manifesto-text">
-      <h1>Don’t ask if I have enough years.<br><span class="blue">Ask if I think big enough.</span></h1>
-      <h1>Don’t ask if it’s safe.<br><span class="red">Ask if it scales.</span></h1>
-      <h1>Don’t ask if I fit the mould.<br><span class="blue">Ask if the mould is outdated.</span></h1>
+  <!-- 3 -->
+  <section class="page">
+    <div class="icon">📊</div>
+    <h2>I don’t have the required years.</h2>
+    <p>Pattern recognition.</p>
+    <p>Marketplace instinct.</p>
+    <p>Commercial accountability.</p>
+    <p>Enough audacity to build a website instead of writing another cover letter.</p>
+    <p class="red">Years are a proxy. I optimise for signal.</p>
+    <div class="nav-buttons">
+      <button onclick="prevPage()">Back</button>
+      <button onclick="nextPage()">On tech</button>
     </div>
-    <button class="enter-btn" onclick="goTo('cta')">Continue</button>
   </section>
 
-  <!-- CTA -->
-  <section class="screen" id="cta">
+  <!-- 4 -->
+  <section class="page">
+    <div class="icon">🛒</div>
+    <h2>My tech experience includes doomscrolling, UPI payments, adding to cart and online shopping.</h2>
+    <p>And yet here I am building this.</p>
+    <p>Initiative beats comfort zones.</p>
+    <p>Understanding how people browse, hesitate, compare, abandon and finally checkout is half the job.</p>
+    <div class="nav-buttons">
+      <button onclick="prevPage()">Back</button>
+      <button onclick="nextPage()">On stories</button>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="page">
+    <div class="icon">📖</div>
+    <h2>I am obsessed with stories.</h2>
+    <p>Books. Reddit threads at 2am. People explaining why they bought something they did not need.</p>
+    <p class="red">Marketplace is storytelling with checkout buttons.</p>
+    <p>The best products do not just sell. They signal.</p>
+    <div class="nav-buttons">
+      <button onclick="prevPage()">Back</button>
+      <button onclick="nextPage()">On dogs</button>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="page">
+    <div class="icon">🐶</div>
+    <h2>I like dogs. Yes, I am basic.</h2>
+    <p>Specifically the slightly derpy, tongue-out, no-thoughts-just-vibes kind.</p>
+    <p>I notice emotional signals. I value loyalty. I believe consistency builds trust.</p>
+    <div class="nav-buttons">
+      <button onclick="prevPage()">Back</button>
+      <button onclick="nextPage()">On planning</button>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="page">
+    <div class="icon">🗺️</div>
+    <h2>I plan holidays like product launches.</h2>
+    <p>Budget. Experience map. Contingencies. Backup airport snacks.</p>
+    <p class="blue">Execution is attractive.</p>
+    <p class="red">Chaos is overrated.</p>
+    <div class="nav-buttons">
+      <button onclick="prevPage()">Back</button>
+      <button onclick="nextPage()">On what I bring</button>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="page">
+    <div class="icon">⚙️</div>
+    <h2>What I bring to the table.</h2>
+    <p>Marketplace thinking beyond listings.</p>
+    <p>Comfort owning revenue, not just reach.</p>
+    <p>Paid and platform integration instinct.</p>
+    <p>Ability to zoom out and zoom in.</p>
+    <p>Structured experimentation muscle.</p>
+    <p>Cross functional fluency.</p>
+    <p>Calm under commercial pressure.</p>
+    <p class="blue">And yes, audacity.</p>
+    <div class="nav-buttons">
+      <button onclick="prevPage()">Back</button>
+      <button onclick="nextPage()">Continue</button>
+    </div>
+  </section>
+
+  <!-- 9 Manifesto -->
+  <section class="page">
+    <h1>Don’t ask if I have enough years.<br><span class="blue">Ask if I think big enough.</span></h1>
+    <h1>Don’t ask if it’s safe.<br><span class="red">Ask if it scales.</span></h1>
+    <h1>Don’t ask if I fit the mould.<br><span class="blue">Ask if the mould is outdated.</span></h1>
+    <div class="nav-buttons">
+      <button onclick="prevPage()">Back</button>
+      <button onclick="nextPage()">Continue</button>
+    </div>
+  </section>
+
+  <!-- 10 CTA -->
+  <section class="page">
     <h2>Let’s build something worth lining up for.</h2>
-    <a href="mailto:sharmayushi31@gmail.com" class="cta-btn">sharmayushi31@gmail.com</a>
+    <a href="mailto:sharmayushi31@gmail.com" class="cta">sharmayushi31@gmail.com</a>
     <a href="https://www.linkedin.com/in/ayushi-s/" target="_blank" class="linkedin">LinkedIn</a>
+    <button onclick="goTo(0)">Back to start</button>
   </section>
 
 </div>
