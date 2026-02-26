@@ -1,3 +1,5 @@
+/* ===== GLOBAL ===== */
+
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
@@ -16,30 +18,51 @@ body {
   text-align: center;
 }
 
-.section-title {
-  font-size: 14px;
-  letter-spacing: 2px;
-  opacity: 0.6;
-  margin-bottom: 15px;
-}
+/* ===== ICON ===== */
 
 .top-icon {
-  font-size: 30px;
+  font-size: 32px;
   color: #ff2b2b;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
+  transition: transform 0.3s ease;
 }
 
+.top-icon:hover {
+  transform: scale(1.1);
+}
+
+/* ===== SECTION TITLE ===== */
+
+.section-title {
+  font-size: 13px;
+  letter-spacing: 2px;
+  opacity: 0.6;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+}
+
+/* ===== TEXT LINES ===== */
+
 .line {
-  font-size: 18px;
+  font-size: 17px;
   margin: 8px 0;
   opacity: 0.9;
 }
 
 .highlight {
   font-weight: 700;
-  font-size: 22px;
-  margin-top: 15px;
+  font-size: 21px;
+  margin-top: 16px;
 }
+
+/* ===== QUOTE STYLE ===== */
+
+.quote {
+  font-style: italic;
+  opacity: 0.85;
+}
+
+/* ===== GRID SECTION ===== */
 
 .grid {
   display: grid;
@@ -50,43 +73,103 @@ body {
 
 .grid-box {
   border: 1px solid rgba(255,255,255,0.2);
-  padding: 14px;
+  padding: 14px 16px;
   border-radius: 8px;
   text-align: left;
   font-size: 15px;
   display: flex;
-  gap: 10px;
+  gap: 12px;
   align-items: center;
   background: rgba(255,255,255,0.03);
-  transition: 0.3s ease;
+  transition: all 0.25s ease;
 }
 
 .grid-box:hover {
-  background: rgba(255, 43, 43, 0.1);
+  background: rgba(255, 43, 43, 0.08);
   border-color: #ff2b2b;
+  transform: translateY(-2px);
 }
 
 .grid-box i {
   color: #ff2b2b;
+  font-size: 14px;
 }
 
+/* ===== NAVIGATION ===== */
+
 .nav {
-  margin-top: 40px;
+  margin-top: 45px;
   display: flex;
   justify-content: space-between;
 }
 
 button {
-  padding: 10px 20px;
+  padding: 10px 22px;
   background: transparent;
-  border: 1px solid white;
+  border: 1px solid rgba(255,255,255,0.6);
   color: white;
   cursor: pointer;
   font-size: 14px;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 button:hover {
   background: white;
   color: black;
+  border-color: white;
+}
+
+/* ===== CONTACT SECTION ===== */
+
+.contact {
+  margin-top: 28px;
+  font-size: 16px;
+}
+
+.contact a {
+  color: #ff2b2b;
+  text-decoration: none;
+}
+
+.contact a:hover {
+  text-decoration: underline;
+}
+
+/* ===== TRANSITIONS ===== */
+
+.fade-enter {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.5s ease;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+
+  .container {
+    width: 90%;
+  }
+
+  .line {
+    font-size: 16px;
+  }
+
+  .highlight {
+    font-size: 19px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nav {
+    margin-top: 30px;
+  }
+
 }
