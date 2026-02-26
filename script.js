@@ -4,10 +4,11 @@ const contentData = [
     title: "WHY NOT ME",
     icon: "fa-question",
     lines: [
+      "Why not me?",
+      "Because I don’t have enough years of experience?",
       "Wasn’t it a great brand that once said,",
       { text: "“Don’t ask if your dreams are crazy. Ask if they’re crazy enough.”", class: "quote" },
-      "I did.",
-      "And here we are."
+      "So here we are."
     ]
   },
 
@@ -15,10 +16,10 @@ const contentData = [
     title: "THIS WASN’T SUPPOSED TO BE SENT HERE",
     icon: "fa-bullseye",
     lines: [
-      "This was supposed to be sent to adidas.",
-      "It isn’t.",
-      "Because I think Nike is cooler.",
-      "If you’re going to take a swing, you might as well aim properly."
+      "This was meant for three stripes.",
+      "It chose motion instead.",
+      "If I’m taking the swing,",
+      "I’m taking it where it counts."
     ]
   },
 
@@ -180,6 +181,7 @@ function renderSection() {
     });
 
     content.appendChild(grid);
+
   } else {
     section.lines.forEach((lineData, index) => {
       const line = document.createElement("div");
