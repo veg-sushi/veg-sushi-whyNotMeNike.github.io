@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: #000;
+  background: radial-gradient(circle at top left, #6b0000, #000000 45%, #000000 60%, #001f3f);
   color: white;
   display: flex;
   justify-content: center;
@@ -10,53 +10,36 @@ body {
   overflow: hidden;
 }
 
-.background-glow {
-  position: fixed;
-  width: 120%;
-  height: 120%;
-  background: radial-gradient(circle at 20% 20%, rgba(255,0,0,0.15), transparent 40%),
-              radial-gradient(circle at 80% 80%, rgba(0,70,255,0.15), transparent 40%);
-  animation: glowMove 12s ease infinite alternate;
-  z-index: 0;
-}
-
-@keyframes glowMove {
-  from { transform: translateY(-20px); }
-  to { transform: translateY(20px); }
-}
-
 .container {
   width: 85%;
-  max-width: 900px;
+  max-width: 820px;
   text-align: center;
-  position: relative;
-  z-index: 2;
 }
 
 .top-icon {
-  font-size: 34px;
+  font-size: 28px;
   color: #ff2b2b;
-  margin-bottom: 22px;
+  margin-bottom: 18px;
 }
 
 .section-title {
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 2px;
   opacity: 0.6;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   text-transform: uppercase;
 }
 
 .line {
-  font-size: 17px;
-  margin: 8px 0;
+  font-size: 15px;
+  margin: 6px 0;
   opacity: 0.85;
 }
 
 .highlight {
   font-weight: 700;
-  font-size: 22px;
-  margin-top: 20px;
+  font-size: 19px;
+  margin-top: 18px;
 }
 
 .quote {
@@ -64,58 +47,90 @@ body {
   opacity: 0.8;
 }
 
+/* TECH SLIDE STRUCTURE */
+
+.tech-small {
+  font-size: 13px;
+  opacity: 0.65;
+  letter-spacing: 0.4px;
+}
+
+.tech-pause {
+  margin-top: 22px;
+}
+
+.tech-strong {
+  font-size: 17px;
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+.tech-reflect {
+  max-width: 600px;
+  margin: 16px auto 0 auto;
+  font-size: 14px;
+  opacity: 0.7;
+  line-height: 1.5;
+}
+
+.tech-final {
+  font-size: 20px;
+  margin-top: 24px;
+}
+
+/* GRID */
+
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-  margin: 30px auto;
-  max-width: 800px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin: 26px auto;
 }
 
 .grid-box {
   border: 1px solid rgba(255,255,255,0.15);
-  padding: 20px;
-  border-radius: 10px;
+  padding: 14px 16px;
+  border-radius: 8px;
   display: flex;
-  gap: 14px;
+  gap: 10px;
   align-items: flex-start;
-  background: rgba(255,255,255,0.03);
-  transition: 0.3s ease;
-  min-height: 80px;
+  background: rgba(255,255,255,0.02);
+  transition: 0.25s ease;
+  font-size: 14px;
 }
 
 .icon-wrap {
-  min-width: 22px;
+  min-width: 18px;
   color: #ff2b2b;
-  margin-top: 3px;
+  margin-top: 2px;
 }
 
 .text-wrap {
   flex: 1;
   text-align: left;
-  line-height: 1.4;
+  line-height: 1.35;
 }
 
 .grid-box:hover {
   border-color: #ff2b2b;
-  background: rgba(255,43,43,0.08);
-  transform: translateY(-4px);
+  background: rgba(255,43,43,0.06);
+  transform: translateY(-2px);
 }
 
 .nav {
-  margin-top: 40px;
+  margin-top: 32px;
   display: flex;
   justify-content: space-between;
 }
 
 button {
-  padding: 10px 26px;
+  padding: 8px 22px;
   background: transparent;
   border: 1px solid rgba(255,255,255,0.5);
   color: white;
   cursor: pointer;
-  font-size: 14px;
-  transition: 0.3s ease;
+  font-size: 13px;
+  transition: 0.25s ease;
 }
 
 button:hover {
@@ -124,7 +139,7 @@ button:hover {
 }
 
 .contact {
-  margin-top: 28px;
+  margin-top: 24px;
 }
 
 .contact a {
@@ -134,20 +149,6 @@ button:hover {
 
 .contact a:hover {
   text-decoration: underline;
-}
-
-.fade {
-  animation: fadeIn 0.4s ease;
-}
-
-.reveal {
-  opacity: 0;
-  animation: revealUp 0.6s ease forwards;
-}
-
-@keyframes revealUp {
-  from { opacity: 0; transform: translateY(18px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 @media (max-width: 768px) {
