@@ -13,6 +13,18 @@ const contentData = [
   },
 
   {
+    id: "redirect",
+    icon: "fa-bullseye",
+    title: "THIS WASN’T SUPPOSED TO BE SENT HERE",
+    lines: [
+      "This was meant for three stripes.",
+      "It chose motion instead.",
+      "If I’m taking the swing,",
+      "I’m taking it where it counts."
+    ]
+  },
+
+  {
     id: "about",
     icon: "fa-user",
     title: "SO WHAT ABOUT ME?",
@@ -27,6 +39,47 @@ const contentData = [
   },
 
   {
+    id: "stories",
+    icon: "fa-book",
+    title: "I LOVE STORIES",
+    lines: [
+      "Books.",
+      "Reddit at 2am.",
+      "Buying behaviour breakdowns.",
+      "Marketplace is storytelling with checkout buttons.",
+      "The best products don’t just sell.",
+      "They signal."
+    ]
+  },
+
+  {
+    id: "dogs",
+    icon: "fa-dog",
+    title: "BASIC BUT SELF AWARE",
+    lines: [
+      "I like dogs. Yes, I am basic.",
+      "Specifically the slightly derpy kind.",
+      "I notice emotional signals.",
+      "I value loyalty.",
+      "Consistency builds trust."
+    ]
+  },
+
+  {
+    id: "planner",
+    icon: "fa-calendar-check",
+    title: "I PLAN THINGS AGGRESSIVELY WELL",
+    lines: [
+      "I plan holidays like product launches.",
+      "Budget.",
+      "Experience map.",
+      "Contingencies.",
+      "Execution is attractive.",
+      "Chaos is overrated."
+    ]
+  },
+
+  {
     id: "table",
     icon: "fa-fire",
     title: "WHAT I BRING TO THE TABLE",
@@ -34,12 +87,32 @@ const contentData = [
   },
 
   {
-    id: "manifesto",
+    id: "manifesto1",
     icon: "fa-brain",
     title: "MANIFESTO",
     lines: [
       "Don’t ask if I have enough years.",
       "Ask if I think big enough."
+    ]
+  },
+
+  {
+    id: "manifesto2",
+    icon: "fa-rocket",
+    title: "MANIFESTO",
+    lines: [
+      "Don’t ask if it’s safe.",
+      "Ask if it scales."
+    ]
+  },
+
+  {
+    id: "manifesto3",
+    icon: "fa-arrows-rotate",
+    title: "MANIFESTO",
+    lines: [
+      "Don’t ask if I fit the mould.",
+      "Ask if the mould is outdated."
     ]
   },
 
@@ -87,26 +160,21 @@ function renderSection() {
 
   else if (section.type === "tech") {
 
-    // Group 1 – Behaviour stack (smaller)
     addLine("Doomscrolling.", "tech-small");
     addLine("UPI.", "tech-small");
     addLine("Add to cart.", "tech-small");
     addLine("Checkout.", "tech-small");
 
-    // Group 2 – Narrative pause
     addLine("And yet here I am building this website from scratch.", "tech-pause");
     addLine("Why?");
 
-    // Group 3 – Core punch
     addHTMLLine("<strong>Just</strong> because I can <strong>do</strong> <strong>it</strong>", "tech-strong");
     addHTMLLine("Struggle, but still, <strong>do it</strong>", "tech-strong");
 
-    // Group 4 – Reflection
     addLine("Initiative > comfort zones.", "tech-reflect");
     addLine("Also, if we’re being honest", "tech-reflect");
     addLine("knowing how people browse, hesitate, compare, abandon and finally checkout", "tech-reflect");
 
-    // Final anchor
     addHighlight("is half the job.", "tech-final");
   }
 
@@ -126,11 +194,20 @@ function renderSection() {
   }
 
   else {
-    section.lines.forEach((line, index) => {
-      if (index === section.lines.length - 1) {
-        addHighlight(line);
+
+    section.lines.forEach((lineData, index) => {
+
+      if (typeof lineData === "object") {
+        const line = document.createElement("div");
+        line.className = `line ${lineData.class || ""}`;
+        line.innerText = lineData.text;
+        content.appendChild(line);
       } else {
-        addLine(line);
+        if (index === section.lines.length - 1) {
+          addHighlight(lineData);
+        } else {
+          addLine(lineData);
+        }
       }
     });
   }
