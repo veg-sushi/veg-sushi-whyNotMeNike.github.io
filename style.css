@@ -1,5 +1,3 @@
-/* ===== GLOBAL ===== */
-
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
@@ -18,8 +16,7 @@ body {
   text-align: center;
 }
 
-/* ===== ICON ===== */
-
+/* Top icon */
 .top-icon {
   font-size: 32px;
   color: #ff2b2b;
@@ -31,8 +28,7 @@ body {
   transform: scale(1.1);
 }
 
-/* ===== SECTION TITLE ===== */
-
+/* Section title */
 .section-title {
   font-size: 13px;
   letter-spacing: 2px;
@@ -41,8 +37,7 @@ body {
   text-transform: uppercase;
 }
 
-/* ===== TEXT LINES ===== */
-
+/* Text lines */
 .line {
   font-size: 17px;
   margin: 8px 0;
@@ -55,15 +50,12 @@ body {
   margin-top: 16px;
 }
 
-/* ===== QUOTE STYLE ===== */
-
 .quote {
   font-style: italic;
   opacity: 0.85;
 }
 
-/* ===== GRID SECTION ===== */
-
+/* Grid section */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -95,8 +87,7 @@ body {
   font-size: 14px;
 }
 
-/* ===== NAVIGATION ===== */
-
+/* Navigation */
 .nav {
   margin-top: 45px;
   display: flex;
@@ -119,8 +110,7 @@ button:hover {
   border-color: white;
 }
 
-/* ===== CONTACT SECTION ===== */
-
+/* Contact section */
 .contact {
   margin-top: 28px;
   font-size: 16px;
@@ -135,8 +125,7 @@ button:hover {
   text-decoration: underline;
 }
 
-/* ===== TRANSITIONS ===== */
-
+/* Transition */
 .fade-enter {
   opacity: 0;
   transform: translateY(12px);
@@ -148,10 +137,8 @@ button:hover {
   transition: all 0.5s ease;
 }
 
-/* ===== RESPONSIVE ===== */
-
+/* Responsive */
 @media (max-width: 768px) {
-
   .container {
     width: 90%;
   }
@@ -171,5 +158,4 @@ button:hover {
   .nav {
     margin-top: 30px;
   }
-
 }
