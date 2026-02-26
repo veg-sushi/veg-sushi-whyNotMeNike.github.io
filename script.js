@@ -4,9 +4,8 @@ const contentData = [
     title: "WHY NOT ME",
     icon: "fa-question",
     lines: [
-      "WHY NOT ME.",
       "Wasn’t it a great brand that once said,",
-      "Don’t ask if your dreams are crazy. Ask if they’re crazy enough.",
+      { text: "“Don’t ask if your dreams are crazy. Ask if they’re crazy enough.”", class: "quote" },
       "I did.",
       "And here we are."
     ]
@@ -110,7 +109,7 @@ const contentData = [
 
   {
     title: "MANIFESTO",
-    icon: "fa-bolt",
+    icon: "fa-brain",
     lines: [
       "Don’t ask if I have enough years.",
       "Ask if I think big enough."
@@ -119,7 +118,7 @@ const contentData = [
 
   {
     title: "MANIFESTO",
-    icon: "fa-bolt",
+    icon: "fa-rocket",
     lines: [
       "Don’t ask if it’s safe.",
       "Ask if it scales."
@@ -128,7 +127,7 @@ const contentData = [
 
   {
     title: "MANIFESTO",
-    icon: "fa-bolt",
+    icon: "fa-arrows-rotate",
     lines: [
       "Don’t ask if I fit the mould.",
       "Ask if the mould is outdated."
@@ -136,13 +135,14 @@ const contentData = [
   },
 
   {
-    title: "IF YOU’RE STILL READING",
+    title: "LET’S BUILD",
     icon: "fa-flag-checkered",
     lines: [
       "Let’s build something people line up for.",
       "The kind that moves inventory.",
       "And moves conversations."
-    ]
+    ],
+    contact: true
   }
 
 ];
@@ -153,7 +153,9 @@ const nextBtn = document.getElementById("nextBtn");
 const backBtn = document.getElementById("backBtn");
 
 function renderSection() {
+  content.classList.add("fade-enter");
   content.innerHTML = "";
+
   const section = contentData[currentIndex];
 
   const icon = document.createElement("div");
@@ -179,16 +181,39 @@ function renderSection() {
 
     content.appendChild(grid);
   } else {
-    section.lines.forEach((text, index) => {
+    section.lines.forEach((lineData, index) => {
       const line = document.createElement("div");
       line.className = "line";
+
+      if (typeof lineData === "object") {
+        line.innerText = lineData.text;
+        line.classList.add(lineData.class);
+      } else {
+        line.innerText = lineData;
+      }
+
       if (index === section.lines.length - 1) {
         line.classList.add("highlight");
       }
-      line.innerText = text;
+
       content.appendChild(line);
     });
   }
+
+  if (section.contact) {
+    const contact = document.createElement("div");
+    contact.className = "contact";
+    contact.innerHTML = `
+      <p><a href="mailto:sharmayushi31@gmail.com">sharmayushi31@gmail.com</a></p>
+      <p><a href="https://www.linkedin.com/in/ayushi-s/" target="_blank">LinkedIn</a></p>
+    `;
+    content.appendChild(contact);
+  }
+
+  setTimeout(() => {
+    content.classList.remove("fade-enter");
+    content.classList.add("fade-enter-active");
+  }, 10);
 
   backBtn.style.visibility = currentIndex === 0 ? "hidden" : "visible";
   nextBtn.style.visibility = currentIndex === contentData.length - 1 ? "hidden" : "visible";
