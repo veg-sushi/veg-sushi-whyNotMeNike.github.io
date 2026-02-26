@@ -8,9 +8,9 @@ const contentData = [
       "Because I don’t have enough years of experience?",
       "Wasn’t it a great brand that once said,",
       { text: "“Don’t ask if your dreams are crazy. Ask if they’re crazy enough.”", class: "quote" },
-      "So here we are.",
-      { text: "〰", class: "highlight" }  // swoosh
-    ]
+      "So here we are."
+    ],
+    swoosh: true
   },
 
   {
@@ -27,7 +27,7 @@ const contentData = [
   {
     title: "SO WHAT ABOUT ME?",
     icon: "fa-user",
-    type: "grid-custom"
+    type: "experience"
   },
 
   {
@@ -43,6 +43,60 @@ const contentData = [
       "Because I can do it.",
       "(Struggle. But do it.)",
       "Understanding behaviour is half the job."
+    ]
+  },
+
+  {
+    title: "I LOVE STORIES",
+    icon: "fa-book",
+    lines: [
+      "Books.",
+      "Reddit at 2am.",
+      "Buying behaviour breakdowns.",
+      "Marketplace is storytelling with checkout buttons.",
+      "The best products don’t just sell.",
+      "They signal."
+    ]
+  },
+
+  {
+    title: "BASIC BUT SELF AWARE",
+    icon: "fa-dog",
+    lines: [
+      "I like dogs. Yes, I am basic.",
+      "Specifically the slightly derpy, tongue-out, no-thoughts-just-vibes kind.",
+      "I notice emotional signals.",
+      "I value loyalty.",
+      "I believe consistency builds trust."
+    ]
+  },
+
+  {
+    title: "I PLAN THINGS AGGRESSIVELY WELL",
+    icon: "fa-calendar-check",
+    lines: [
+      "I plan holidays like product launches.",
+      "Budget.",
+      "Experience map.",
+      "Contingencies.",
+      "Execution is attractive.",
+      "Chaos is overrated."
+    ]
+  },
+
+  {
+    title: "WHAT I BRING TO THE TABLE",
+    icon: "fa-fire",
+    lines: [
+      "Marketplace thinking beyond listings.",
+      "Comfort owning revenue, not just reach.",
+      "Drop and launch sensitivity with commercial discipline.",
+      "Paid and platform integration instinct.",
+      "Ability to zoom out and zoom in.",
+      "Structured experimentation muscle.",
+      "Cross functional fluency.",
+      "Calm under commercial pressure.",
+      "Audacity."
     ]
   },
 
@@ -80,7 +134,7 @@ function renderSection() {
   title.innerText = section.title;
   content.appendChild(title);
 
-  if (section.type === "grid-custom") {
+  if (section.type === "experience") {
 
     const intro = document.createElement("div");
     intro.className = "line";
@@ -112,7 +166,6 @@ function renderSection() {
     content.appendChild(closing);
 
   } else {
-
     section.lines.forEach((lineData, index) => {
       const line = document.createElement("div");
       line.className = "line";
@@ -130,6 +183,13 @@ function renderSection() {
 
       content.appendChild(line);
     });
+  }
+
+  if (section.swoosh) {
+    const swoosh = document.createElement("div");
+    swoosh.className = "highlight";
+    swoosh.innerHTML = "&#8767;";
+    content.appendChild(swoosh);
   }
 
   if (section.contact) {
