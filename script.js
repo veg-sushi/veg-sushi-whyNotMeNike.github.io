@@ -1,5 +1,3 @@
-
-
 const contentData = [
 
   {
@@ -9,7 +7,7 @@ const contentData = [
     lines: [
       "Because I don’t have enough years of experience?",
       "Wasn’t it a great brand that once said,",
-      { text: "“Don’t ask if your dreams are crazy. Ask if they’re crazy enough.”", class: "quote" },
+      { text: "Don’t ask if your dreams are crazy. Ask if they’re crazy enough.", class: "quote" },
       "So here we are."
     ]
   },
@@ -55,21 +53,21 @@ const contentData = [
   },
 
   {
-  id: "dogs",
-  icon: "fa-dog",
-  title: "BASIC. BUT DISCERNING.",
-  lines: [
-    "I love dogs. Yes, I am basic like that.",
-    "They get excited about small wins.",
-    "They commit immediately.",
-    "They do not overthink.",
-    "Not big on pouncing felines",
-    "(If you know what I mean.)",
-    "Too much lurking.",
-    "Too much plotting.",
-    "I respect enthusiasm."
-  ]
-},
+    id: "dogs",
+    icon: "fa-dog",
+    title: "BASIC. BUT DISCERNING.",
+    lines: [
+      "I love dogs. Yes, I am basic like that.",
+      "They get excited about small wins.",
+      "They commit immediately.",
+      "They do not overthink.",
+      "Not big on pouncing felines",
+      "(If you know what I mean.)",
+      "Too much lurking.",
+      "Too much plotting.",
+      "I respect enthusiasm."
+    ]
+  },
 
   {
     id: "planner",
@@ -123,15 +121,63 @@ const contentData = [
   },
 
   {
-    id: "final",
-    icon: "fa-flag-checkered",
-    title: "LET’S BUILD",
+    id: "safe",
+    icon: "fa-shield",
+    title: "",
     lines: [
-      "Let’s build something people line up for.",
+      "If you’re looking for safe,",
+      "you probably already have 200 options.",
+      "",
+      "If you’re looking for sharp,",
+      "slightly unconventional,",
+      "commercially serious but culturally awake,",
+      "",
+      "Why not me."
+    ]
+  },
+
+  {
+    id: "build",
+    icon: "fa-flag-checkered",
+    title: "",
+    lines: [
+      "Let’s build something worth lining up for.",
       "The kind that moves inventory.",
       "And moves conversations."
+    ]
+  },
+
+  {
+    id: "choice",
+    type: "choice"
+  },
+
+  {
+    id: "yes",
+    icon: "fa-check",
+    title: "Good decision.",
+    lines: [
+      "Strong instincts.",
+      "",
+      "Let’s build something",
+      "that moves product",
+      "and moves culture."
     ],
     contact: true
+  },
+
+  {
+    id: "no",
+    icon: "fa-eye",
+    title: "Fair.",
+    lines: [
+      "Safe is comfortable.",
+      "",
+      "This product will sell somewhere else.",
+      "",
+      "You can always reconsider."
+    ],
+    reconsider: true
   }
 
 ];
@@ -145,6 +191,30 @@ function renderSection() {
 
   content.innerHTML = "";
   const section = contentData[currentIndex];
+
+  if (section.type === "choice") {
+
+    addHighlight("Your move.");
+
+    const wrap = document.createElement("div");
+    wrap.className = "choice-wrap";
+
+    const yesBtn = document.createElement("button");
+    yesBtn.innerText = "Yes";
+    yesBtn.onclick = () => goTo("yes");
+
+    const noBtn = document.createElement("button");
+    noBtn.innerText = "No";
+    noBtn.onclick = () => goTo("no");
+
+    wrap.appendChild(yesBtn);
+    wrap.appendChild(noBtn);
+    content.appendChild(wrap);
+
+    nextBtn.style.visibility = "hidden";
+    backBtn.style.visibility = "visible";
+    return;
+  }
 
   addIcon(section.icon);
   addTitle(section.title);
@@ -229,11 +299,25 @@ function renderSection() {
     content.appendChild(contact);
   }
 
+  if (section.reconsider) {
+    const btn = document.createElement("button");
+    btn.innerText = "Reconsider";
+    btn.style.marginTop = "20px";
+    btn.onclick = () => goTo("yes");
+    content.appendChild(btn);
+  }
+
   backBtn.style.visibility = currentIndex === 0 ? "hidden" : "visible";
   nextBtn.style.visibility = currentIndex === contentData.length - 1 ? "hidden" : "visible";
 }
 
+function goTo(id) {
+  currentIndex = contentData.findIndex(s => s.id === id);
+  renderSection();
+}
+
 function addIcon(iconClass) {
+  if (!iconClass) return;
   const icon = document.createElement("div");
   icon.className = "top-icon";
   icon.innerHTML = `<i class="fa-solid ${iconClass}"></i>`;
@@ -241,6 +325,7 @@ function addIcon(iconClass) {
 }
 
 function addTitle(text) {
+  if (!text) return;
   const title = document.createElement("div");
   title.className = "section-title";
   title.innerText = text;
@@ -269,27 +354,20 @@ function addHighlight(text, extraClass = "") {
 }
 
 function addGrid(items) {
-
   const grid = document.createElement("div");
   grid.className = "grid";
-
   items.forEach((item, index) => {
-
     const box = document.createElement("div");
     box.className = "grid-box";
-
     if (items.length % 2 !== 0 && index === items.length - 1) {
       box.classList.add("full-width");
     }
-
     box.innerHTML = `
       <div class="icon-wrap"><i class="fa-solid ${item.icon}"></i></div>
       <div class="text-wrap">${item.text}</div>
     `;
-
     grid.appendChild(box);
   });
-
   content.appendChild(grid);
 }
 
