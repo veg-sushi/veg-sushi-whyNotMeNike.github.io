@@ -311,12 +311,19 @@ function renderSection() {
     btn.onclick = () => goTo("move-forward");
     content.appendChild(btn);
   }
+// Navigation control
+
 backBtn.style.visibility = currentIndex === 0 ? "hidden" : "visible";
 
-if (section.id === "move-forward" || section.id === "not-at-this-time") {
-  nextBtn.style.visibility = "hidden";
+// Hide next on decision result pages
+if (
+  section.type === "choice" ||
+  section.id === "move-forward" ||
+  section.id === "not-at-this-time"
+) {
+  nextBtn.style.display = "none";
 } else {
-  nextBtn.style.visibility = currentIndex === contentData.length - 1 ? "hidden" : "visible";
+  nextBtn.style.display = "inline-block";
 }
 }
 
