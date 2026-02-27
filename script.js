@@ -146,47 +146,46 @@ const contentData = [
       "And moves conversations."
     ]
   },
+{
+  id: "choice",
+  type: "choice"
+},
 
-  {
-    id: "what next then",
-    type: "choice"
-  },
+{
+  id: "move-forward",
+  icon: "fa-check",
+  title: "Move forward.",
+  lines: [
+    "Strong instincts.",
+    "",
+    "Let’s build something",
+    "that moves product",
+    "and shapes culture."
+  ],
+  contact: true
+},
 
-  {
-    id: "Move forward",
-    icon: "fa-check",
-    title: "Good decision.",
-    lines: [
-      "Strong instincts.",
-      "",
-      "Let’s build something",
-      "that moves product",
-      "and shapes culture."
-    ],
-    contact: true
-  },
-
-  {
-    id: "not this time",
-    icon: "fa-eye",
-    title: "Fair.",
-    lines: [
-      "Safe is comfortable.",
-      "",
-      "This product will sell somewhere else.",
-      "",
-      "Probably well."
-      "",
-      "And when you see it everywhere,"
-      "",
-      "you’ll remember this page."
-      "",
-      "No hard feelings."
-      ""
-      "You can always reconsider."
-    ],
-    reconsider: true
-  }
+{
+  id: "not-at-this-time",
+  icon: "fa-eye",
+  title: "Not at this time.",
+  lines: [
+    "Fair.",
+    "",
+    "Safe is comfortable.",
+    "",
+    "This product will sell somewhere else.",
+    "",
+    "Probably well.",
+    "",
+    "And when you see it everywhere,",
+    "",
+    "you’ll remember this page.",
+    "",
+    "You can always reconsider."
+  ],
+  reconsider: true
+}
 
 ];
 
