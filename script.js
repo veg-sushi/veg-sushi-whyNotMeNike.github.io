@@ -311,9 +311,13 @@ function renderSection() {
     btn.onclick = () => goTo("move-forward");
     content.appendChild(btn);
   }
+backBtn.style.visibility = currentIndex === 0 ? "hidden" : "visible";
 
-  backBtn.style.visibility = currentIndex === 0 ? "hidden" : "visible";
+if (section.id === "move-forward" || section.id === "not-at-this-time") {
+  nextBtn.style.visibility = "hidden";
+} else {
   nextBtn.style.visibility = currentIndex === contentData.length - 1 ? "hidden" : "visible";
+}
 }
 
 function goTo(id) {
