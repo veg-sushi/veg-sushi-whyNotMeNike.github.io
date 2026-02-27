@@ -146,46 +146,47 @@ const contentData = [
       "And moves conversations."
     ]
   },
-{
-  id: "choice",
-  type: "choice"
-},
 
-{
-  id: "move-forward",
-  icon: "fa-check",
-  title: "Move forward.",
-  lines: [
-    "Strong instincts.",
-    "",
-    "Let’s build something",
-    "that moves product",
-    "and shapes culture."
-  ],
-  contact: true
-},
+  {
+    id: "choice",
+    type: "choice"
+  },
 
-{
-  id: "not-at-this-time",
-  icon: "fa-eye",
-  title: "Not at this time.",
-  lines: [
-    "Fair.",
-    "",
-    "Safe is comfortable.",
-    "",
-    "This product will sell somewhere else.",
-    "",
-    "Probably well.",
-    "",
-    "And when you see it everywhere,",
-    "",
-    "you’ll remember this page.",
-    "",
-    "You can always reconsider."
-  ],
-  reconsider: true
-}
+  {
+    id: "move-forward",
+    icon: "fa-check",
+    title: "Move forward.",
+    lines: [
+      "Strong instincts.",
+      "",
+      "Let’s build something",
+      "that moves product",
+      "and shapes culture."
+    ],
+    contact: true
+  },
+
+  {
+    id: "not-at-this-time",
+    icon: "fa-eye",
+    title: "Not at this time.",
+    lines: [
+      "Fair.",
+      "",
+      "Safe is comfortable.",
+      "",
+      "This product will sell somewhere else.",
+      "",
+      "Probably well.",
+      "",
+      "And when you see it everywhere,",
+      "",
+      "you’ll remember this page.",
+      "",
+      "You can always reconsider."
+    ],
+    reconsider: true
+  }
 
 ];
 
@@ -201,27 +202,27 @@ function renderSection() {
 
   if (section.type === "choice") {
 
-  addHighlight("So, what next then?");
+    addHighlight("So, what next then?");
 
-  const wrap = document.createElement("div");
-  wrap.className = "choice-wrap";
+    const wrap = document.createElement("div");
+    wrap.className = "choice-wrap";
 
-  const yesBtn = document.createElement("button");
-  yesBtn.innerText = "Move forward";
-  yesBtn.onclick = () => goTo("move-forward");
+    const yesBtn = document.createElement("button");
+    yesBtn.innerText = "Move forward";
+    yesBtn.onclick = () => goTo("move-forward");
 
-  const noBtn = document.createElement("button");
-  noBtn.innerText = "Not at this time";
-  noBtn.onclick = () => goTo("not-at-this-time");
+    const noBtn = document.createElement("button");
+    noBtn.innerText = "Not at this time";
+    noBtn.onclick = () => goTo("not-at-this-time");
 
-  wrap.appendChild(yesBtn);
-  wrap.appendChild(noBtn);
-  content.appendChild(wrap);
+    wrap.appendChild(yesBtn);
+    wrap.appendChild(noBtn);
+    content.appendChild(wrap);
 
-  nextBtn.style.visibility = "hidden";
-  backBtn.style.visibility = "visible";
-  return;
-}
+    nextBtn.style.visibility = "hidden";
+    backBtn.style.visibility = "visible";
+    return;
+  }
 
   addIcon(section.icon);
   addTitle(section.title);
@@ -277,16 +278,13 @@ function renderSection() {
   }
 
   else {
-
     section.lines.forEach((lineData, index) => {
-
       if (typeof lineData === "object") {
         const line = document.createElement("div");
         line.className = `line ${lineData.class || ""}`;
         line.innerText = lineData.text;
         content.appendChild(line);
-      } 
-      else {
+      } else {
         if (index === section.lines.length - 1) {
           addHighlight(lineData);
         } else {
@@ -319,8 +317,11 @@ function renderSection() {
 }
 
 function goTo(id) {
-  currentIndex = contentData.findIndex(s => s.id === id);
-  renderSection();
+  const index = contentData.findIndex(s => s.id === id);
+  if (index !== -1) {
+    currentIndex = index;
+    renderSection();
+  }
 }
 
 function addIcon(iconClass) {
